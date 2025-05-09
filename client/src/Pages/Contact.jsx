@@ -1,8 +1,12 @@
+import { Box } from '@mui/material'
 import React from 'react'
+import ContactForm from '../Components/ContactForm'
 
 const Contact = () => {
   return (
-    <div>Contact</div>
+    <Box>
+        <ContactForm />
+    </Box>
   )
 }
 
