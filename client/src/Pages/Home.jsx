@@ -3,6 +3,7 @@ import React from 'react'
 import Hero from '../Components/Home/Hero'
 import MediaUploadTabs from '../Components/Home/Upload'
 import ResultSection from '../Components/Home/Result'
+import FAQ from '../Components/About/FAQ'
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
       <MediaUploadTabs />
       {/* <ResultSection /> */}
       <Hero/>
+      <FAQ />
     </Box>
   )
 }

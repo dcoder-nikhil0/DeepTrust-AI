@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Tabs, Tab, Card, Typography, Button, Box } from "@mui/material";
-import { Upload } from "lucide-react";
+import { CircleFadingPlus } from "lucide-react";
 import { FaInfoCircle } from "react-icons/fa";
 
 const MediaUploadTabs = () => {
@@ -65,23 +65,24 @@ const MediaUploadTabs = () => {
   return (
     <div className="flex flex-col md:flex-row gap-6 p-6">
       {/* Left Side About */}
-      <Card className="p-6 w-full md:w-1/2 bg-blue-50 shadow-md rounded-2xl">
-        <div className="flex items-center gap-2 mb-4">
+      <Card className="p-6 w-full md:w-1/2 ">
+        <div className="flex items-center gap-2 mb-4 mt-20">
           <FaInfoCircle className="text-blue-500 text-xl" />
           <Typography variant="h6" className="text-blue-900">
-            About
+            How to Use
           </Typography>
         </div>
         <Typography variant="body1" className="text-gray-700">
-          This tool helps you upload and detect content in{" "}
-          <strong>images</strong>, <strong>audio</strong>, and{" "}
-          <strong>video</strong> files using AI/ML models. Simply select a tab,
-          upload a file, and click "Continue Detection" to see the result.
+          To upload a video, image or audio for deepfake detection, simply click
+          the “Upload ” button to choose a file from your device. Once the file
+          is ready, click “Start Detection” to begin the analysis process. After
+          a few moments, the results will be displayed, providing you with a
+          confidence score and a detailed breakdown of the detection findings.
         </Typography>
       </Card>
 
       {/* Right Side Upload Section */}
-      <Card className="p-6 w-full md:w-1/2 bg-white shadow-lg rounded-2xl">
+      <Card className="p-6 w-full md:w-1/2 bg-white shadow-2xl shadow-gray-400 rounded-2xl">
         <Tabs
           value={tabIndex}
           onChange={(e, newIndex) => {
@@ -120,9 +121,9 @@ const MediaUploadTabs = () => {
 
           {/* Upload Box */}
           {!selectedFile && (
-            <div className="flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-xl p-6 h-52 mb-4">
-              <Upload className="w-10 h-10 text-gray-500 mb-3" />
-              <label className="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+            <div className="flex flex-col items-center justify-center border-2 border-dashed border-gray-400 rounded-xl p-6 h-74 mb-4">
+              <CircleFadingPlus className="w-20 h-20 text-gray-500 mb-3" />
+              <label className="cursor-pointer mt-9 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
                 Browse File
                 <input
                   type="file"
@@ -130,6 +131,27 @@ const MediaUploadTabs = () => {
                   onChange={handleFileChange}
                 />
               </label>
+            </div>
+          )}
+
+          {/* Image/Video Preview */}
+          {selectedFile && currentType === "image" && (
+            <div className="flex justify-center mb-4">
+              <img
+                src={URL.createObjectURL(selectedFile)}
+                alt="Preview"
+                className="max-w-full max-h-96 object-contain"
+              />
+            </div>
+          )}
+
+          {selectedFile && currentType === "video" && (
+            <div className="flex justify-center mb-4">
+              <video
+                controls
+                src={URL.createObjectURL(selectedFile)}
+                className="max-w-full max-h-96"
+              />
             </div>
           )}
 
