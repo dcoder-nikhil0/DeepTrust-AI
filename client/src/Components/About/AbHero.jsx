@@ -1,47 +1,46 @@
 import { Box } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
+import deepfake from "../../assets/deepfake.webp";
 
 const AbHero = () => {
   return (
     <Box>
-      <div className="lg:flex">
-        <div className="flex items-center justify-center w-full px-6 py-8 lg:h-[32rem] lg:w-1/2">
-          <div className="max-w-xl">
-            <h2 className="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl">
-              Build Your New{" "}
-              <span className="text-blue-600 dark:text-blue-400">Idea</span>
+      <div className="flex flex-col-reverse lg:flex-row items-center justify-center px-4 py-10 lg:py-16 lg:px-12">
+        {/* Left Text Section */}
+        <div className="w-full lg:w-1/2 flex items-center justify-center">
+          <div className="max-w-xl text-center lg:text-left">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 ">
+              DeepTrust AI - Deep Fake Detection Technology
             </h2>
 
-            <p className="mt-4 text-sm text-gray-500 dark:text-gray-400 lg:text-base">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Blanditiis commodi cum cupiditate ducimus, fugit harum id
-              necessitatibus odio quam quasi, quibusdam rem tempora voluptates.
+            <p className="mt-4 text-sm sm:text-base text-gray-600">
+              DeepTrust AI is an advanced deepfake detection platform designed
+              to identify manipulated videos using cutting-edge artificial
+              intelligence and deep learning techniques. It provides accurate,
+              real-time analysis with a focus on user privacy, security, and
+              ease of use. The platform aims to combat digital misinformation
+              and support content authenticity across industries.
             </p>
 
-            <div className="flex flex-col mt-6 space-y-3 lg:space-y-0 lg:flex-row">
-              <a
-                href="#"
-                className="block px-5 py-2 text-sm font-medium tracking-wider text-center text-white transition-colors duration-300 transform bg-gray-900 rounded-md hover:bg-gray-700"
+            <div className="mt-6">
+              <Link
+                to="/"
+                className="inline-block px-6 py-3 text-sm font-medium text-white bg-gray-900 rounded-md hover:bg-gray-700 transition duration-300"
               >
                 Get Started
-              </a>
-              <a
-                href="#"
-                className="block px-5 py-2 text-sm font-medium tracking-wider text-center text-gray-700 transition-colors duration-300 transform bg-gray-200 rounded-md lg:mx-4 hover:bg-gray-300"
-              >
-                Learn More
-              </a>
+              </Link>
             </div>
           </div>
         </div>
 
-        <div className="w-full h-64 lg:w-1/2 lg:h-auto">
-          <div
-            className="w-full h-full bg-cover"
-            // style="background-image: url(https://images.unsplash.com/photo-1508394522741-82ac9c15ba69?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=748&q=80)"
-          >
-            <div className="w-full h-full bg-black opacity-25"></div>
-          </div>
+        {/* Right Image Section */}
+        <div className="w-full lg:w-1/2 mb-8 lg:mb-0">
+          <img
+            src={deepfake}
+            alt="Deepfake Illustration"
+            className="w-full h-auto max-h-[400px] object-contain"
+          />
         </div>
       </div>
     </Box>

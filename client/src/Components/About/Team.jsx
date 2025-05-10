@@ -1,54 +1,56 @@
 import { Box } from "@mui/material";
 import React from "react";
+import img from "../../assets/image.png";
+import me from "../../assets/me.png";
 
 const Team = () => {
   return (
     <Box>
       <section className="bg-white dark:bg-gray-900">
-        <div className="container px-6 py-10 mx-auto">
-          <div className="xl:flex xl:items-center xL:-mx-4">
-            <div className="xl:w-1/2 xl:mx-4">
-              <h1 className="text-2xl font-semibold text-gray-800 capitalize lg:text-3xl dark:text-white">
+        <div className="container px-4 py-10 mx-auto">
+          <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-8">
+            {/* Text Section */}
+            <div className="xl:w-1/2">
+              <h1 className="text-3xl font-semibold text-gray-800 dark:text-white">
                 Our Team
               </h1>
-
-              <p className="max-w-2xl mt-4 text-gray-500 dark:text-gray-300">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
-                incidunt ex placeat modi magni quia error alias, adipisci rem
-                similique, at omnis eligendi optio eos harum.
+              <p className="mt-4 text-gray-600 dark:text-gray-300 max-w-2xl">
+                We are a two-member team specializing in artificial intelligence
+                and software development, committed to delivering a robust and
+                accurate deepfake detection solution. Our combined expertise
+                ensures a high-quality, secure, and user-centric platform
+                designed to address the growing challenge of digital
+                misinformation.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-0 xl:mx-4 xl:w-1/2 md:grid-cols-2">
-              <div>
+            {/* Team Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 xl:w-1/2">
+              <div className="text-center">
                 <img
-                  className="object-cover rounded-xl aspect-square"
-                  src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                  alt=""
+                  className="w-full h-auto object-cover rounded-xl aspect-square"
+                  src={me}
+                  alt="Nikhil Ranjan"
                 />
-
-                <h1 className="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white">
-                  John Doe
-                </h1>
-
-                <p className="mt-2 text-gray-500 capitalize dark:text-gray-300">
-                  Full stack developer
+                <h2 className="mt-4 text-xl font-semibold text-gray-800 dark:text-white">
+                  Nikhil Ranjan
+                </h2>
+                <p className="mt-1 text-gray-600 dark:text-gray-300">
+                  Full-Stack Developer & Data Scientist
                 </p>
               </div>
 
-              <div>
+              <div className="text-center">
                 <img
-                  className="object-cover rounded-xl aspect-square"
-                  src="https://images.unsplash.com/photo-1499470932971-a90681ce8530?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                  alt=""
+                  className="w-full h-auto object-cover rounded-xl aspect-square"
+                  src={img}
+                  alt="Asad Ijtaba"
                 />
-
-                <h1 className="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white">
-                  Mia
-                </h1>
-
-                <p className="mt-2 text-gray-500 capitalize dark:text-gray-300">
-                  Graphic Designer
+                <h2 className="mt-4 text-xl font-semibold text-gray-800 dark:text-white">
+                  Asad Ijtaba
+                </h2>
+                <p className="mt-1 text-gray-600 dark:text-gray-300">
+                  Data Scientist
                 </p>
               </div>
             </div>
