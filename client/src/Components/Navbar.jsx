@@ -1,8 +1,17 @@
 // Navbar.jsx
-import React, { useState } from 'react';
-import { AppBar, Toolbar, IconButton, Typography, Drawer, List, ListItem, ListItemText } from '@mui/material';
-import { FaPhone, FaInfoCircle, FaBars } from 'react-icons/fa';
-import { MdClose } from 'react-icons/md';
+import React, { useState } from "react";
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+} from "@mui/material";
+import { FaPhone, FaInfoCircle, FaBars } from "react-icons/fa";
+import { MdClose } from "react-icons/md";
 
 const Navbar = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -12,23 +21,27 @@ const Navbar = () => {
   };
 
   const navLinks = [
-    { label: 'About', icon: <FaInfoCircle />, href: '#about' },
-    { label: 'Contact', icon: <FaPhone />, href: '#contact' },
+    { label: "About", icon: <FaInfoCircle />, href: "/about" },
+    { label: "Contact", icon: <FaPhone />, href: "/contact" },
   ];
 
   return (
     <>
       <AppBar position="static" className="bg-white shadow-md">
-        <Toolbar className="flex justify-between items-center">
+        <Toolbar className="flex bg-gray-900 justify-between items-center">
           {/* Logo */}
-          <Typography variant="h6" className="text-blue-600 font-bold">
-            True Vision
+          <Typography variant="h6" className="text-white font-bold">
+            DeepTrust AI
           </Typography>
 
           {/* Desktop Links */}
-          <div className="hidden md:flex gap-6 items-center text-gray-800 text-base font-medium">
+          <div className="hidden md:flex gap-6 items-center text-white mx-15 text-base font-medium">
             {navLinks.map(({ label, icon, href }) => (
-              <a key={label} href={href} className="flex items-center gap-1 hover:text-blue-500 transition-colors">
+              <a
+                key={label}
+                href={href}
+                className="flex items-center gap-2 hover:text-blue-500 transition-colors"
+              >
                 {icon}
                 {label}
               </a>
@@ -37,8 +50,8 @@ const Navbar = () => {
 
           {/* Mobile Menu Icon */}
           <div className="md:hidden">
-            <IconButton onClick={toggleDrawer(true)} className="text-gray-700">
-              <FaBars />
+            <IconButton onClick={toggleDrawer(true)} className="text-white">
+              <FaBars className="text-white" />
             </IconButton>
           </div>
         </Toolbar>
@@ -46,18 +59,24 @@ const Navbar = () => {
 
       {/* Drawer for Mobile */}
       <Drawer anchor="right" open={openDrawer} onClose={toggleDrawer(false)}>
-        <div className="w-64 flex flex-col h-full p-4">
-          <div className="flex justify-between items-center mb-6">
-            <Typography variant="h6" className="text-blue-600 font-bold">
-              True Vision
+        <div className="w-64 flex flex-col bg-gray-900 h-full p-4">
+          <div className="flex bg-gray-900 justify-between items-center mb-6">
+            <Typography variant="h6" className="text-white font-bold">
+              DeepTrust AI
             </Typography>
             <IconButton onClick={toggleDrawer(false)}>
-              <MdClose />
+              <MdClose className="text-white" />
             </IconButton>
           </div>
-          <List>
+          <List className="text-white">
             {navLinks.map(({ label, icon, href }) => (
-              <ListItem button key={label} component="a" href={href} onClick={toggleDrawer(false)}>
+              <ListItem
+                button
+                key={label}
+                component="a"
+                href={href}
+                onClick={toggleDrawer(false)}
+              >
                 {icon}
                 <ListItemText className="ml-3">{label}</ListItemText>
               </ListItem>
