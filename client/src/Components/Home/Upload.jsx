@@ -1,5 +1,16 @@
 import React, { useState } from "react";
-import { Tabs, Tab, Card, Typography, Button, Box } from "@mui/material";
+import {
+  Tabs,
+  Tab,
+  Card,
+  Typography,
+  Button,
+  Box,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+} from "@mui/material";
 import { CircleFadingPlus } from "lucide-react";
 
 const MediaUploadTabs = () => {
@@ -9,6 +20,7 @@ const MediaUploadTabs = () => {
   const [isDetecting, setIsDetecting] = useState(false);
   const [error, setError] = useState(null);
   const [isDragOver, setIsDragOver] = useState(false);
+  const [showResultModal, setShowResultModal] = useState(false);
 
   const mediaTypes = ["image", "audio", "video"];
   const currentType = mediaTypes[tabIndex];
@@ -58,6 +70,7 @@ const MediaUploadTabs = () => {
       );
       const data = await response.json();
       setResult(data.result);
+      setShowResultModal(true);
     } catch (error) {
       console.error("Upload error:", error);
     } finally {
@@ -169,21 +182,6 @@ const MediaUploadTabs = () => {
               {isDetecting ? "Detecting..." : "Continue Detection"}
             </Button>
           )}
-
-          {/* Detection Result */}
-          {result && (
-            <Card className="mt-6 p-4 bg-gray-100 border rounded-xl">
-              <Typography variant="h6" className="text-green-700 mb-2">
-                Detection Result
-              </Typography>
-              <Typography variant="body2">
-                <strong>Label:</strong> {result.label}
-              </Typography>
-              <Typography variant="body2">
-                <strong>Confidence:</strong> {result.confidence}
-              </Typography>
-            </Card>
-          )}
         </Box>
 
         {/* Sticky mobile upload button */}
@@ -201,6 +199,41 @@ const MediaUploadTabs = () => {
           </div>
         )}
       </Card>
+
+      {/* Detection Result Modal */}
+      <Dialog
+        open={showResultModal}
+        onClose={() => setShowResultModal(false)}
+        fullWidth
+        maxWidth="sm"
+      >
+        <DialogTitle className="font-bold text-xl text-green-700">
+          Detection Result
+        </DialogTitle>
+        <DialogContent dividers>
+          {result ? (
+            <>
+              <Typography variant="body1" gutterBottom>
+                <strong>Label:</strong> {result.label}
+              </Typography>
+              <Typography variant="body1">
+                <strong>Confidence:</strong> {result.confidence}
+              </Typography>
+            </>
+          ) : (
+            <Typography variant="body1">No result available.</Typography>
+          )}
+        </DialogContent>
+        <DialogActions>
+          <Button
+            onClick={() => setShowResultModal(false)}
+            color="primary"
+            variant="outlined"
+          >
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 };
